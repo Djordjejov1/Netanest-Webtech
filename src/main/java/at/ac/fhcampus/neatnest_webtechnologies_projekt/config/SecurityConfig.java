@@ -14,6 +14,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+                .headers(headers -> headers.frameOptions(frame -> frame.disable())) // H2 Console braucht iFrames
                 .authorizeHttpRequests(auth -> auth
                         // Diese Endpoints sind ohne Login erreichbar
                         .requestMatchers("/api/auth/**").permitAll()
