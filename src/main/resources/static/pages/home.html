@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeatNest – Home</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h1>NeatNest</h1>
+    <div class="nav-right">
+        <span id="welcomeText"></span>
+        <button onclick="logout()">Abmelden</button>
+    </div>
+</nav>
+
+<!-- HAUPTINHALT -->
+<div class="container">
+
+    <!-- KATEGORIEN -->
+    <div class="categories">
+        <div class="category-card" onclick="window.location.href='/pages/movies.html'">
+            <div class="icon">🎬</div>
+            <h2>Movies</h2>
+            <p>Deine Filmsammlung</p>
+        </div>
+        <div class="category-card" onclick="window.location.href='/pages/songs.html'">
+            <div class="icon">🎵</div>
+            <h2>Songs</h2>
+            <p>Deine Musiksammlung</p>
+        </div>
+        <div class="category-card" onclick="window.location.href='/pages/books.html'">
+            <div class="icon">📚</div>
+            <h2>Books</h2>
+            <p>Deine Büchersammlung</p>
+        </div>
+        <div class="category-card favorites" onclick="window.location.href='/pages/favorites.html'">
+            <div class="icon">⭐</div>
+            <h2>Favorites</h2>
+            <p>Deine Lieblinge</p>
+        </div>
+    </div>
+
+</div>
+
+<script src="/js/pages/home.js"></script>
+</body>
+</html>

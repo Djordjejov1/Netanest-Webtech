@@ -4,7 +4,7 @@ window.onload = function() {
         .then(response => {
             if (response.ok) {
                 // Bereits eingeloggt → weiterleiten
-                window.location.href = '/pages/movies.html';
+                window.location.href = '/pages/home.html';
             }
         });
 };
@@ -24,7 +24,7 @@ function login() {
             if (response.ok) {
                 message.className = 'message success';
                 message.textContent = 'Login erfolgreich!';
-                window.location.href = '/pages/movies.html';
+                window.location.href = '/pages/home.html';
             } else {
                 message.className = 'message error';
                 message.textContent = 'Falscher Username oder Passwort!';
