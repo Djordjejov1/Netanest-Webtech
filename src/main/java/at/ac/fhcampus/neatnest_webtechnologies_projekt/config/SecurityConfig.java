@@ -59,6 +59,7 @@ public class SecurityConfig {
                                 .requestMatchers("/js/**").permitAll()
                                 .requestMatchers("/assets/**").permitAll()
                                 .requestMatchers("/h2-console/**").permitAll()
+                                .requestMatchers("/", "/error", "/index.html").permitAll() // Root und Fehlerseite freigeben
 
                                 // Alles andere braucht Login
                                 .anyRequest().authenticated()

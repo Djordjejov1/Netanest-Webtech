@@ -13,6 +13,7 @@
     <h1>NeatNest</h1>
     <div class="nav-right">
         <span id="welcomeText"></span>
+        <button onclick="window.location.href='/pages/home.html'">Home</button>
         <button onclick="logout()">Abmelden</button>
     </div>
 </nav>
@@ -37,6 +38,19 @@
         <div id="moviesList"></div>
     </div>
 
+<!-- MODAL -->
+<div id="movieModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <img id="modalPoster" src="" alt="Poster" />
+            <h2 id="modalTitle"></h2>
+        </div>
+        <div id="modalInfo"></div>
+        <div class="modal-buttons">
+            <button onclick="editMovie()">Bearbeiten</button>
+            <button onclick="closeModal()">Schließen</button>
+        </div>
+    </div>
 </div>
 
 <script src="/js/pages/movies.js"></script>

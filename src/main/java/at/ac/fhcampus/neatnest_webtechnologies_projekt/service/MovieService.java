@@ -64,6 +64,11 @@ public class MovieService {
         movie.setDirector(updatedMovie.getDirector());
         movie.setPosterUrl(updatedMovie.getPosterUrl());
         movie.setImdbId(updatedMovie.getImdbId());
+        movie.setReleased(updatedMovie.getReleased());
+        movie.setRuntime(updatedMovie.getRuntime());
+        movie.setActors(updatedMovie.getActors());
+        movie.setPlot(updatedMovie.getPlot());
+        movie.setImdbRating(updatedMovie.getImdbRating());
         return movieRepository.save(movie);
     }
 

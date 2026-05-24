@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeatNest – Film bearbeiten</title>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h1>NeatNest</h1>
+    <div class="nav-right">
+        <button onclick="window.location.href='/pages/movies.html'">Zurück</button>
+        <button onclick="logout()">Abmelden</button>
+    </div>
+</nav>
+
+<!-- HAUPTINHALT -->
+<div class="container">
+    <div class="card">
+        <h2>Film bearbeiten</h2>
+
+        <label>Titel</label>
+        <input type="text" id="title" />
+
+        <label>Jahr</label>
+        <input type="text" id="year" />
+
+        <label>Genre</label>
+        <input type="text" id="genre" />
+
+        <label>Regisseur</label>
+        <input type="text" id="director" />
+
+        <label>Erscheinungsdatum</label>
+        <input type="text" id="released" />
+
+        <label>Laufzeit</label>
+        <input type="text" id="runtime" />
+
+        <label>Schauspieler</label>
+        <input type="text" id="actors" />
+
+        <label>IMDb Bewertung</label>
+        <input type="text" id="imdbRating" />
+
+        <label>Plot</label>
+        <textarea id="plot" rows="4"></textarea>
+
+        <!-- Versteckte Felder die nicht editierbar aber nötig sind -->
+        <input type="hidden" id="posterUrl" />
+        <input type="hidden" id="imdbId" />
+
+        <button class="save-btn" onclick="saveMovie()">Speichern</button>
+    </div>
+</div>
+
+<script src="/js/pages/edit-movie.js"></script>
+</body>
+</html>

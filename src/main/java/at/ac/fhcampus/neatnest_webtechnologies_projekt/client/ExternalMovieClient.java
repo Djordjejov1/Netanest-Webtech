@@ -69,6 +69,11 @@ public class ExternalMovieClient {
             movie.put("genre", response.get("Genre"));
             movie.put("director", response.get("Director"));
             movie.put("posterUrl", response.get("Poster"));
+            movie.put("released", response.get("Released"));
+            movie.put("runtime", response.get("Runtime"));
+            movie.put("actors", response.get("Actors"));
+            movie.put("plot", response.get("Plot"));
+            movie.put("imdbRating", response.get("imdbRating"));
 
             return movie;
 
