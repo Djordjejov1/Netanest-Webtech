@@ -6,6 +6,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +24,9 @@ public class AuthController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
 
     @PostMapping("/register")
@@ -49,20 +56,26 @@ public class AuthController {
         String username = body.get("username");
         String password = body.get("password");
 
-        // User in DB suchen
-        User user = userRepository.findByUsername(username).orElse(null);
+        try {
+            // Spring Security authentifiziert den User → ruft automatisch
+            // userDetailsService() + passwordEncoder() aus SecurityConfig auf
+            Authentication auth = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(username, password)
+            );
 
-        // User nicht gefunden oder Passwort falsch
-        if (user == null || !passwordEncoder.matches(password, user.getPassword())) {
+            // Security Context setzen — Spring weiß jetzt wer eingeloggt ist
+            SecurityContextHolder.getContext().setAuthentication(auth);
+
+            // Session erstellen
+            HttpSession session = request.getSession(true);
+            session.setAttribute("userId", userRepository.findByUsername(username).get().getId());
+            session.setAttribute("username", username);
+
+            return ResponseEntity.ok("Login erfolgreich");
+
+        } catch (Exception e) {
             return ResponseEntity.status(401).body("Ungültige Anmeldedaten");
         }
-
-        // Session erstellen
-        HttpSession session = request.getSession(true);
-        session.setAttribute("userId", user.getId());
-        session.setAttribute("username", user.getUsername());
-
-        return ResponseEntity.ok("Login erfolgreich");
     }
 
 

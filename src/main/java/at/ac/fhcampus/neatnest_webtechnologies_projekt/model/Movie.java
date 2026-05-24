@@ -13,7 +13,9 @@ public class Movie {
     @Column(nullable = false)
     private String title;
 
+    @Column(name = "release_year")
     private String year;
+
     private String genre;
     private String director;
     private String posterUrl;

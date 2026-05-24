@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeatNest – Movies</title>
+    <link rel="stylesheet" href="/css/movies.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h1>NeatNest</h1>
+    <div class="nav-right">
+        <span id="welcomeText"></span>
+        <button onclick="logout()">Abmelden</button>
+    </div>
+</nav>
+
+<!-- HAUPTINHALT -->
+<div class="container">
+
+    <!-- FILM HINZUFÜGEN -->
+    <div class="card">
+        <h2>Film hinzufügen</h2>
+        <input type="text" id="searchInput" placeholder="Film suchen (OMDB)..." />
+        <button onclick="searchOMDB()">Suchen</button>
+
+        <!-- OMDB Suchergebnisse -->
+        <div id="searchResults"></div>
+    </div>
+
+    <!-- MEINE FILME -->
+    <div class="card">
+        <h2>Meine Filme</h2>
+        <input type="text" id="filterInput" placeholder="Filtern..." oninput="filterMovies()" />
+        <div id="moviesList"></div>
+    </div>
+
+</div>
+
+<script src="/js/pages/movies.js"></script>
+</body>
+</html>

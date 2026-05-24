@@ -16,21 +16,21 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
-    // Alle Filme laden
+
     @GetMapping
     public ResponseEntity getAllMovies(HttpSession session) {
         List<Movie> movies = movieService.getAllMovies(session);
         return ResponseEntity.ok(movies);
     }
 
-    // Film hinzufügen
+
     @PostMapping
     public ResponseEntity addMovie(HttpSession session, @RequestBody Movie movie) {
         Movie saved = movieService.addMovie(session, movie);
         return ResponseEntity.status(201).body(saved);
     }
 
-    // Film bearbeiten
+
     @PutMapping("/{id}")
     public ResponseEntity updateMovie(HttpSession session, @PathVariable Long id, @RequestBody Movie movie) {
         Movie updated = movieService.updateMovie(session, id, movie);
@@ -40,7 +40,7 @@ public class MovieController {
         return ResponseEntity.ok(updated);
     }
 
-    // Film löschen
+
     @DeleteMapping("/{id}")
     public ResponseEntity deleteMovie(HttpSession session, @PathVariable Long id) {
         boolean deleted = movieService.deleteMovie(session, id);
@@ -50,10 +50,12 @@ public class MovieController {
         return ResponseEntity.ok("Film gelöscht");
     }
 
-    // Filme suchen
+
     @GetMapping("/search")
     public ResponseEntity searchMovies(HttpSession session, @RequestParam String q) {
         List<Movie> movies = movieService.searchMovies(session, q);
         return ResponseEntity.ok(movies);
+        //Suche erfolgt anhand von @RequestParam -> ?q Spring bearbeitet es automatisch.
+        //Security erfolgt durch SecurityConfig Spring speert ja alles vom Werk.
     }
 }
