@@ -36,8 +36,22 @@
         <div id="songsList"></div>
     </div>
 
+    <!-- SONG MODAL -->
+    <div id="songModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modalCover" src="" alt="Cover">
+                <h2 id="modalTitle"></h2>
+            </div>
+            <div id="modalInfo"></div>
+            <div class="modal-buttons">
+                <button onclick="editSong()">Bearbeiten</button>
+                <button onclick="closeModal()">Schließen</button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script src="/js/pages/songs.js"></script>
+<script src="/js/pages/songpages/songs.js"></script>
 </body>
 </html>

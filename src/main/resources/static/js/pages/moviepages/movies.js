@@ -169,7 +169,7 @@ function closeModal() {
 
 function editMovie() {
     // zur Edit-Page mit der Film-ID
-    window.location.href = '/pages/edit-movie.html?id=' + currentMovie.id;
+    window.location.href = '/pages/moviespages/edit-movie.html?id=' + currentMovie.id;
 }
 
 // Abmelden

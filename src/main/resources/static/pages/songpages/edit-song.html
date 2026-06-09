@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeatNest – Song bearbeiten</title>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h1>NeatNest</h1>
+    <div class="nav-right">
+        <button onclick="window.location.href='/pages/songpages/songs.html'">Zurück</button>
+        <button onclick="logout()">Abmelden</button>
+    </div>
+</nav>
+
+<!-- HAUPTINHALT -->
+<div class="container">
+    <div class="card">
+        <h2>Song bearbeiten</h2>
+
+        <label>Titel</label>
+        <input type="text" id="title" />
+
+        <label>Artist</label>
+        <input type="text" id="artist" />
+
+        <label>Album</label>
+        <input type="text" id="album" />
+
+<label>Erscheinungsdatum</label>
+        <input type="text" id="releaseDate" />
+
+        <label>Dauer</label>
+        <input type="text" id="duration" />
+
+        <label>Explicit</label>
+        <input type="text" id="explicit" placeholder="true oder false" />
+
+        <!-- Versteckte Felder die nicht editierbar aber nötig sind -->
+        <input type="hidden" id="coverUrl" />
+        <input type="hidden" id="spotifyUrl" />
+
+        <button class="save-btn" onclick="saveSong()">Speichern</button>
+    </div>
+</div>
+
+<script src="/js/pages/songpages/edit-song.js"></script>
+</body>
+</html>

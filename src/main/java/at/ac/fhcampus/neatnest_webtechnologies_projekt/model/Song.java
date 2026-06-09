@@ -15,9 +15,12 @@ public class Song {
 
     private String artist;
     private String album;
-    private String genre;
     private String spotifyUrl;
     private String coverUrl;
+    private Boolean explicit;
+    private String duration;
+    private String releaseDate;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -35,10 +38,7 @@ public class Song {
     public String getAlbum() { return album; }
     public void setAlbum(String album) { this.album = album; }
 
-    public String getGenre() { return genre; }
-    public void setGenre(String genre) { this.genre = genre; }
-
-    public String getSpotifyUrl() { return spotifyUrl; }
+public String getSpotifyUrl() { return spotifyUrl; }
     public void setSpotifyUrl(String spotifyUrl) { this.spotifyUrl = spotifyUrl; }
 
     public String getCoverUrl() {return coverUrl;}
@@ -46,4 +46,31 @@ public class Song {
 
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }
+
+
+    public Boolean getExplicit() {
+        return explicit;
+    }
+
+    public void setExplicit(Boolean explicit) {
+        this.explicit = explicit;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+
 }

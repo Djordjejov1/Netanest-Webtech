@@ -100,6 +100,22 @@ public class ExternalSongClient {
                 song.put("spotifyUrl",
                         ((Map) item.get("external_urls")).get("spotify"));
 
+
+                //Explicit (true/false)
+                song.put("explicit", item.get("explicit"));
+
+                //Dauer in ms → umrechnen
+                Integer durationMs = (Integer)
+                        item.get("duration_ms");
+                if (durationMs != null){
+                    int minutes = durationMs / 60000;
+                    int seconds = (durationMs % 60000) / 1000;
+                    song.put("duration", minutes + ":" + String.format("%02d", seconds));
+                }
+
+                //Release Date aus dem Album
+                song.put("releaseDate", album.get("release_date"));
+
                 songs.add(song);
             }
 

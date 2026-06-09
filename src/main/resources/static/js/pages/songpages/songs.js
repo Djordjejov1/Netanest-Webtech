@@ -1,3 +1,7 @@
+var currentSong = null;
+var allSongs = [];
+var searchResults = [];
+
 // Beim Laden prüfen ob eingeloggt + Songs laden
 window.onload = function() {
     fetch('/api/auth/me')
@@ -21,6 +25,7 @@ function loadSongs() {
     fetch('/api/songs')
         .then(response => response.json())
         .then(songs => {
+            allSongs = songs;
             renderSongs(songs);
         });
 }
@@ -45,12 +50,13 @@ function renderSongs(songs) {
             '<h3>' + song.title + '</h3>' +
             '<p>' + (song.artist || '') + ' • ' + (song.album || '') + '</p>' +
             '</div>' +
+            '<button class="info-btn" onclick="openModal(' + song.id + ')">Info</button>' +
             '<button class="delete-btn" onclick="deleteSong(' + song.id + ')">Löschen</button>';
         list.appendChild(item);
     }
 }
 
-// Song Suche (Spotify API - kommt noch)
+// Song Suche (Spotify API)
 function searchSongs() {
     var query = document.getElementById('searchInput').value;
     var results = document.getElementById('searchResults');
@@ -67,6 +73,7 @@ function searchSongs() {
                 return;
             }
 
+            searchResults = songs;
             results.innerHTML = '';
             for (var i = 0; i < songs.length; i++) {
                 var song = songs[i];
@@ -78,23 +85,27 @@ function searchSongs() {
                     '<h3>' + song.title + '</h3>' +
                     '<p>' + (song.artist || '') + ' • ' + (song.album || '') + '</p>' +
                     '</div>' +
-                    '<button onclick="addSong(\'' + song.title + '\', \'' + song.artist + '\', \'' + song.album + '\', \'' + song.coverUrl + '\', \'' + song.spotifyUrl + '\')">Hinzufügen</button>';
+                    '<button onclick="addSong(' + i + ')">Hinzufügen</button>'
                 results.appendChild(item);
             }
         });
 }
 
 // Song hinzufügen
-function addSong(title, artist, album, coverUrl, spotifyUrl) {
+function addSong(index) {
+    var song = searchResults[index]
     fetch('/api/songs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            title: title,
-            artist: artist,
-            album: album,
-            coverUrl: coverUrl,
-            spotifyUrl: spotifyUrl
+            title:      song.title,
+            artist:     song.artist,
+            album:      song.album,
+            coverUrl:   song.coverUrl,
+            spotifyUrl: song.spotifyUrl,
+            explicit:    song.explicit,
+            duration:    song.duration,
+            releaseDate: song.releaseDate
         })
     })
         .then(response => {
@@ -132,6 +143,29 @@ function filterSongs() {
         }
     }
 }
+
+function openModal(id) {
+    currentSong = allSongs.find(s => s.id === id);
+    document.getElementById('modalTitle').textContent = currentSong.title;
+    document.getElementById('modalCover').src = currentSong.coverUrl || '';
+    document.getElementById('modalInfo').innerHTML =
+        '<p>Artist: ' + (currentSong.artist || 'N/A') + '</p>' +
+        '<p>Album: ' + (currentSong.album || 'N/A') + '</p>' +
+        '<p>Erschienen: ' + (currentSong.releaseDate || 'N/A') + '</p>' +
+        '<p>Dauer: ' + (currentSong.duration || 'N/A') + '</p>' +
+        '<p>Explicit: ' + (currentSong.explicit ? 'Ja 🅴' : 'Nein') + '</p>';
+    document.getElementById('songModal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('songModal').style.display = 'none';
+}
+
+function editSong() {
+    window.location.href = '/pages/songpages/edit-song.html?id=' + currentSong.id;
+}
+
+
 
 // Abmelden
 function logout() {

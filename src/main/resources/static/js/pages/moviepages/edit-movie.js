@@ -9,7 +9,7 @@ window.onload = function() {
             // Film mit passender ID finden
             var movie = movies.find(m => m.id == movieId);
             if (!movie) {
-                window.location.href = '/pages/movies.html';
+                window.location.href = '/pages/moviespages/movies.html';
                 return;
             }
             // Felder befüllen
@@ -49,7 +49,7 @@ function saveMovie() {
     .then(response => {
         if (response.ok) {
             // zurück zur Movies-Page
-            window.location.href = '/pages/movies.html';
+            window.location.href = '/pages/moviespages/movies.html';
         }
     });
 }
