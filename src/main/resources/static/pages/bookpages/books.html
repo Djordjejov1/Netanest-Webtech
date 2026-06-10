@@ -20,9 +20,9 @@
 <div class="container">
 
     <div class="card">
-        <h2>Buch suchen (Google Books)</h2>
+        <h2>Buch suchen </h2>
         <input type="text" id="searchInput" placeholder="Buchtitel oder Autor suchen..." />
-        <button onclick="searchGoogleBooks()">Suchen</button>
+        <button onclick="searchBooks()">Suchen</button>
         <div id="searchResults"></div>
     </div>
 
@@ -30,6 +30,21 @@
         <h2>Meine Bücher</h2>
         <input type="text" id="filterInput" placeholder="Filtern..." oninput="filterBooks()" />
         <div id="booksList"></div>
+    </div>
+
+
+    <div id="bookModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modalCover" src="" alt="Cover">
+                <h2 id="modalTitle"></h2>
+            </div>
+            <div id="modalInfo"></div>
+            <div class="modal-buttons">
+                <button onclick="editBook()">Bearbeiten</button>
+                <button onclick="closeModal()">Schließen</button>
+            </div>
+        </div>
     </div>
 
 </div>

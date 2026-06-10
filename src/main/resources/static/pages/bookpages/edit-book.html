@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeatNest – Buch bearbeiten</title>
+    <link rel="stylesheet" href="/css/edit.css">
+</head>
+<body>
+
+<nav>
+    <h1>NeatNest</h1>
+    <div class="nav-right">
+        <button onclick="window.location.href='/pages/bookpages/books.html'">Zurück</button>
+        <button onclick="logout()">Abmelden</button>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <h2>Buch bearbeiten</h2>
+
+        <label>Titel</label>
+        <input type="text" id="title" />
+
+        <label>Autor</label>
+        <input type="text" id="author" />
+
+        <label>Jahr</label>
+        <input type="text" id="year" />
+
+        <label>Genre</label>
+        <input type="text" id="genre" />
+
+        <label>ISBN</label>
+        <input type="text" id="isbn" />
+
+        <button class="save-btn" onclick="saveBook()">Speichern</button>
+    </div>
+</div>
+
+<script src="/js/pages/bookpages/edit-book.js"></script>
+</body>
+</html>
