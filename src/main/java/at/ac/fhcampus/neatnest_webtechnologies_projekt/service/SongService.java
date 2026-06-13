@@ -48,9 +48,12 @@ public class SongService {
         song.setTitle(updatedSong.getTitle());
         song.setArtist(updatedSong.getArtist());
         song.setAlbum(updatedSong.getAlbum());
-        song.setGenre(updatedSong.getGenre());
-        song.setSpotifyUrl(updatedSong.getSpotifyUrl());
+song.setSpotifyUrl(updatedSong.getSpotifyUrl());
         song.setCoverUrl(updatedSong.getCoverUrl());
+        song.setExplicit(updatedSong.getExplicit());
+        song.setDuration(updatedSong.getDuration());
+        song.setReleaseDate(updatedSong.getReleaseDate());
+
         return songRepository.save(song);
     }
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeatNest – Songs</title>
+    <link rel="stylesheet" href="/css/songs.css">
+</head>
+<body>
+<nav>
+    <h1>NeatNest</h1>
+    <div class="nav-right">
+        <span id="welcomeText"></span>
+        <button onclick="window.location.href='/pages/home.html'">Home</button>
+        <button onclick="logout()">Abmelden</button>
+    </div>
+</nav>
+
+<!-- HAUPTINHALT -->
+<div class="container">
+
+    <!-- SONG HINZUFÜGEN -->
+    <div class="card">
+        <h2>Song hinzufügen</h2>
+        <input type="text" id="searchInput" placeholder="Song oder Artist suchen..." />
+        <button onclick="searchSongs()">Suchen</button>
+
+        <!-- Suchergebnisse -->
+        <div id="searchResults"></div>
+    </div>
+
+    <!-- MEINE SONGS -->
+    <div class="card">
+        <h2>Meine Songs</h2>
+        <input type="text" id="filterInput" placeholder="Filtern..." oninput="filterSongs()" />
+        <div id="songsList"></div>
+    </div>
+
+    <!-- SONG MODAL -->
+    <div id="songModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modalCover" src="" alt="Cover">
+                <h2 id="modalTitle"></h2>
+            </div>
+            <div id="modalInfo"></div>
+            <div class="modal-buttons">
+                <button onclick="editSong()">Bearbeiten</button>
+                <button onclick="closeModal()">Schließen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/pages/songpages/songs.js"></script>
+</body>
+</html>

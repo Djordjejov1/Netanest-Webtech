@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeatNest – Login</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>NeatNest</h1>
+    <p class="subtitle">Deine Medien-Collection</p>
+
+    <!-- LOGIN FORM -->
+    <div class="card" id="loginCard">
+        <h2>Login</h2>
+
+        <input type="text" id="loginUsername" placeholder="Username" />
+        <input type="password" id="loginPassword" placeholder="Passwort" />
+        <button onclick="login()">Einloggen</button>
+
+        <p class="switch">Noch kein Account?
+            <span onclick="showRegister()">Registrieren</span>
+        </p>
+
+        <p class="message" id="loginMessage"></p>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div class="card" id="registerCard" style="display:none;">
+        <h2>Registrieren</h2>
+
+        <input type="text" id="registerUsername" placeholder="Username" />
+        <input type="password" id="registerPassword" placeholder="Passwort" />
+        <button onclick="register()">Registrieren</button>
+
+        <p class="switch">Bereits ein Account?
+            <span onclick="showLogin()">Login</span>
+        </p>
+
+        <p class="message" id="registerMessage"></p>
+    </div>
+</div>
+
+<script src="/js/pages/login.js"></script>
+</body>
+</html>

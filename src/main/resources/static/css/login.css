@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.subtitle {
+    color: #888888;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 30px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background-color: #dddddd;
+}
+
+.switch {
+    margin-top: 15px;
+    color: #888888;
+    font-size: 0.9rem;
+}
+
+.switch span {
+    color: #ffffff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.message {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    min-height: 20px;
+}
+
+.message.error { color: #ff4444; }
+.message.success { color: #44ff44; }
