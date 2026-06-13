@@ -181,3 +181,25 @@ function logout() {
             window.location.href = '/pages/login.html';
         });
 }
+
+//Favorite - Funktion
+function addToFavorites() {
+    fetch('/api/favorites', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            mediaType: 'MOVIE',
+            mediaId: currentMovie.id,
+            title: currentMovie.title,
+            imageUrl: currentMovie.posterUrl || ''
+        })
+    })
+        .then(response => {
+            if (response.ok) {
+                alert(currentMovie.title + ' wurde zu Favoriten hinzugefügt!');
+                closeModal();
+            } else {
+                alert('Fehler beim Hinzufügen.');
+            }
+        });
+}

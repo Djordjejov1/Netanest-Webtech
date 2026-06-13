@@ -65,7 +65,6 @@ function searchBooks() {
     fetch('/api/external/books/search?q=' + encodeURIComponent(query))
         .then(function(response) { return response.json(); })
         .then(function(books) {
-
             if (books.length === 0) {
                 results.innerHTML = '<p class="empty-message">Keine Ergebnisse.</p>';
                 return;
@@ -96,11 +95,11 @@ function addBook(index) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            title:        book.title,
-            author:       book.author,
-            year:         book.year,
-            isbn:         book.isbn,
-            thumbnailUrl: book.thumbnail,
+            title:          book.title,
+            author:         book.author,
+            year:           book.year,
+            isbn:           book.isbn,
+            thumbnailUrl:   book.thumbnail,
             googleBooksUrl: ''
         })
     })
@@ -140,7 +139,10 @@ function openModal(id) {
 
     document.getElementById('modalTitle').textContent = currentBook.title;
     document.getElementById('modalCover').src = currentBook.thumbnailUrl || '';
-    document.getElementById('modalCover').onerror = function() { this.onerror = null; this.src = '/assets/no-cover.png'; };
+    document.getElementById('modalCover').onerror = function() {
+        this.onerror = null;
+        this.src = '/assets/no-cover.png';
+    };
     document.getElementById('modalInfo').innerHTML =
         '<p>Autor: ' + (currentBook.author || 'N/A') + '</p>' +
         '<p>Jahr: '  + (currentBook.year   || 'N/A') + '</p>' +
@@ -156,6 +158,28 @@ function closeModal() {
 
 function editBook() {
     window.location.href = '/pages/bookpages/edit-book.html?id=' + currentBook.id;
+}
+
+// Buch zu Favoriten hinzufügen
+function addToFavorites() {
+    fetch('/api/favorites', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            mediaType: 'BOOK',
+            mediaId:   currentBook.id,
+            title:     currentBook.title,
+            imageUrl:  currentBook.thumbnailUrl || ''
+        })
+    })
+        .then(function(response) {
+            if (response.ok) {
+                alert(currentBook.title + ' wurde zu Favoriten hinzugefügt!');
+                closeModal();
+            } else {
+                alert('Fehler beim Hinzufügen.');
+            }
+        });
 }
 
 function logout() {

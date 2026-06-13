@@ -176,3 +176,25 @@ function logout() {
             window.location.href = '/pages/login.html';
         });
 }
+
+//Favoriten hinzufügen
+function addToFavorites() {
+    fetch('/api/favorites', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            mediaType: 'SONG',
+            mediaId: currentSong.id,
+            title: currentSong.title,
+            imageUrl: currentSong.coverUrl || ''
+        })
+    })
+        .then(response => {
+            if (response.ok) {
+                alert(currentSong.title + ' wurde zu Favoriten hinzugefügt!');
+                closeModal();
+            } else {
+                alert('Fehler beim Hinzufügen.');
+            }
+        });
+}

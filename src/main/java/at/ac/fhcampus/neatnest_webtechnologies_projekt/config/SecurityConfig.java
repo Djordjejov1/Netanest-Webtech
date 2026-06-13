@@ -74,6 +74,6 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-        //definiert wie passwörter verschlüssel werden. Wird abgerufen beim speichern in die DB
+        //definiert wie passwörter codiert werden. Wird abgerufen beim speichern in die DB
     }
 }
