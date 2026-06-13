@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+
+nav h1 {
+    font-size: 1.5rem;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-right span {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+nav button {
+    padding: 8px 16px;
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #555;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+nav button:hover {
+    background-color: #333;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* CARD */
+.card {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #555;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background-color: #dddddd;
+}
+
+/* SUCHERGEBNISSE */
+.search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.search-result-item img {
+    width: 50px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.search-result-item .info {
+    flex: 1;
+}
+
+.search-result-item .info h3 {
+    font-size: 1rem;
+}
+
+.search-result-item .info p {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.search-result-item button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
+
+/* FILM LISTE */
+.movie-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.movie-item img {
+    width: 50px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.movie-item .info {
+    flex: 1;
+}
+
+.movie-item .info h3 {
+    font-size: 1rem;
+}
+
+.movie-item .info p {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.movie-item .info-btn {
+    padding: 6px 12px;
+    background-color: transparent;
+    color: #f5a623;
+    border: 1px solid #f5a623;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.movie-item .info-btn:hover {
+    background-color: #f5a623;
+    color: #000000;
+}
+
+.movie-item .delete-btn {
+    padding: 6px 12px;
+    background-color: transparent;
+    color: #ff4444;
+    border: 1px solid #ff4444;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.movie-item .delete-btn:hover {
+    background-color: #ff4444;
+    color: #ffffff;
+}
+
+.empty-message {
+    color: #888;
+    text-align: center;
+    padding: 20px;
+}
+
+/* MODAL */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 999;
+}
+
+.modal-content {
+    background: #1a1a1a;
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.modal-header img {
+    width: 65%;
+    height: 65%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+#modalInfo p {
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    nav {
+        padding: 10px 15px;
+    }
+    .container {
+        padding: 0 10px;
+    }
+    .modal-content {
+        margin: 20px 15px;
+        padding: 20px;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeatNest – Books</title>
+    <link rel="stylesheet" href="/css/movies.css">
+</head>
+<body>
+
+<nav>
+    <h1>NeatNest</h1>
+    <div class="nav-right">
+        <span id="welcomeText"></span>
+        <button onclick="window.location.href='/pages/home.html'">Home</button>
+        <button onclick="logout()">Abmelden</button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+        <h2>Buch suchen (Google Books)</h2>
+        <input type="text" id="searchInput" placeholder="Buchtitel oder Autor suchen..." />
+        <button onclick="searchGoogleBooks()">Suchen</button>
+        <div id="searchResults"></div>
+    </div>
+
+    <div class="card">
+        <h2>Meine Bücher</h2>
+        <input type="text" id="filterInput" placeholder="Filtern..." oninput="filterBooks()" />
+        <div id="booksList"></div>
+    </div>
+
+</div>
+
+<script src="/js/pages/bookpages/book.js"></script>
+</body>
+</html>
