@@ -171,7 +171,7 @@ function addToFavorites() {
             title:     currentBook.title,
             imageUrl:  currentBook.thumbnailUrl || ''
         })
-    })
+    })//
         .then(function(response) {
             if (response.ok) {
                 alert('Zu Favoriten hinzugefügt!');
