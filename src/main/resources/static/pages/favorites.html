@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeatNest – Favorites</title>
     <link rel="stylesheet" href="/css/favorites.css">
 </head>
@@ -10,20 +11,17 @@
 <nav>
     <h1>NeatNest</h1>
     <div class="nav-right">
+        <span id="welcomeText"></span>
         <button onclick="window.location.href='/pages/home.html'">Home</button>
+        <button onclick="logout()">Abmelden</button>
     </div>
 </nav>
 
 <div class="container">
-    <h2>⭐ Meine Favoriten</h2>
-
-    <div id="favoritesList">
-        <div class="favorite-card">
-            <h3>Noch keine Favoriten vorhanden</h3>
-            <p>Füge Filme, Songs oder Bücher zu deinen Favoriten hinzu.</p>
-        </div>
-    </div>
+    <h2>Meine Favoriten</h2>
+    <div id="favoritesList"></div>
 </div>
 
+<script src="/js/pages/favorites/favorites.js"></script>
 </body>
 </html>

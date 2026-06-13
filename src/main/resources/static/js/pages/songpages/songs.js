@@ -191,7 +191,10 @@ function addToFavorites() {
     })
         .then(response => {
             if (response.ok) {
-                alert(currentSong.title + ' wurde zu Favoriten hinzugefügt!');
+                alert('Zu Favoriten hinzugefügt!');
+                closeModal();
+            } else if (response.status === 409) {
+                alert('Bereits in deinen Favoriten!');
                 closeModal();
             } else {
                 alert('Fehler beim Hinzufügen.');
