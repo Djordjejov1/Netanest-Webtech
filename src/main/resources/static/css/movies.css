@@ -47,14 +47,6 @@ body > * {
     }
 }
 
-body.edit-movie-page::before {
-    background-image: url("/images/edit_movie_background.png");
-}
-
-body > * {
-    position: relative;
-    z-index: 1;
-}
 
 /* NAVBAR */
 nav {
@@ -68,6 +60,7 @@ nav {
 
 nav h1 {
     font-size: 1.5rem;
+    color: #f5a623
 }
 
 .nav-right {
