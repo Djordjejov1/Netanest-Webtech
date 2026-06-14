@@ -21,37 +21,39 @@ public class FavoriteService {
     @Autowired
     private UserRepository userRepository;
 
-    // User aus der Session holen (gleich wie bei Movie/Song/Book)
     public User getUserFromSession(HttpSession session) {
         Long userId = (Long) session.getAttribute("userId");
         return userRepository.findById(userId).orElse(null);
     }
 
-    // Alle Favoriten des Users laden
+
     public List<Favorite> getAllFavorites(HttpSession session) {
-        User user = getUserFromSession(session);
-        return favoriteRepository.findByUser(user);
+        User user = getUserFromSession(session); // -> holt sich den eingeloggten User aus der Session
+        return favoriteRepository.findByUser(user); //-> geht in db und holt alle Favoriten die zu diesem User gehören.
+        //
     }
 
-    // Neuen Favoriten hinzufügen — TTL wird hier gesetzt!
+
     public Favorite addFavorite(HttpSession session, Favorite favorite) {
         User user = getUserFromSession(session);
 
-        // Prüfen ob bereits vorhanden
+
         Optional<Favorite> existing = favoriteRepository.findByUserAndMediaTypeAndMediaId(
                 user, favorite.getMediaType(), favorite.getMediaId()
+                //-> geht in DB & schaut ob dieser Favorit bereits exsistiert. Prüft anhand von den unten genannten sachen: user, favorite etc...
+                // gibt Optional zurück kann leer sein, kann aber befüllt sein
         );
 
         if (existing.isPresent()) {
-            return null; // bereits als Favorit gespeichert
+            return null; // isPresent() prüft einfach ob die optionale Liste leer ist oder nicht.
         }
 
-        favorite.setUser(user);
-        favorite.setExpiresAt(LocalDateTime.now().plusHours(24));
-        return favoriteRepository.save(favorite);
+        favorite.setUser(user); // setzt den eingeloggten benutzer auf das FAV-Objekt
+        favorite.setExpiresAt(LocalDateTime.now().plusHours(1)); //Setzt den Ablaufzeitpunkt
+        return favoriteRepository.save(favorite); // speichert den favoriten in db
     }
 
-    // Favoriten manuell löschen
+
     public boolean deleteFavorite(HttpSession session, Long id) {
         User user = getUserFromSession(session);
         Optional<Favorite> existing = favoriteRepository.findByIdAndUser(id, user);
@@ -62,14 +64,11 @@ public class FavoriteService {
         return true;
     }
 
-    // Abgelaufene Favoriten löschen — wird vom Scheduler aufgerufen
+
     public void deleteExpiredFavorites() {
         List<Favorite> expired = favoriteRepository.findByExpiresAtBefore(LocalDateTime.now());
         for (Favorite favorite : expired) {
             favoriteRepository.delete(favorite);
         }
     }
-
-
-
 }

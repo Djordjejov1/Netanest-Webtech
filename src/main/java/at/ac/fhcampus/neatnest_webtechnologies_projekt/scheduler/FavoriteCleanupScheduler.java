@@ -11,8 +11,6 @@ public class FavoriteCleanupScheduler {
     @Autowired
     private FavoriteService favoriteService;
 
-    // Läuft alle 60 Sekunden automatisch
-    // 60000 Millisekunden = 60 Sekunden
     @Scheduled(fixedRate = 60000)
     public void cleanupExpiredFavorites() {
         favoriteService.deleteExpiredFavorites();
