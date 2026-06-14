@@ -130,18 +130,45 @@ function deleteSong(id) {
 }
 
 // Songs filtern
-function filterSongs() {
-    var query = document.getElementById('filterInput').value.toLowerCase();
-    var items = document.querySelectorAll('.song-item');
+function applySortFilter() {
+    var sortValue = document.getElementById('sortSelect').value;
+    var sorted = allSongs.slice();
 
-    for (var i = 0; i < items.length; i++) {
-        var title = items[i].querySelector('h3').textContent.toLowerCase();
-        if (title.includes(query)) {
-            items[i].style.display = 'flex';
-        } else {
-            items[i].style.display = 'none';
-        }
+    if (sortValue === 'alpha-asc') {
+        sorted.sort(function(a, b) { return a.title.localeCompare(b.title); });
+
+    } else if (sortValue === 'alpha-desc') {
+        sorted.sort(function(a, b) { return b.title.localeCompare(a.title); });
+
+    } else if (sortValue === 'artist-asc') {
+        sorted.sort(function(a, b) { return (a.artist || '').localeCompare(b.artist || ''); });
+
+    } else if (sortValue === 'artist-desc') {
+        sorted.sort(function(a, b) { return (b.artist || '').localeCompare(a.artist || ''); });
+
+    } else if (sortValue === 'date-asc') {
+        sorted.sort(function(a, b) { return new Date(a.releaseDate || 0) - new Date(b.releaseDate || 0); });
+
+    } else if (sortValue === 'date-desc') {
+        sorted.sort(function(a, b) { return new Date(b.releaseDate || 0) - new Date(a.releaseDate || 0); });
+
+    } else if (sortValue === 'duration-asc') {
+        sorted.sort(function(a, b) { return parseDurationMs(a.duration) - parseDurationMs(b.duration); });
+
+    } else if (sortValue === 'duration-desc') {
+        sorted.sort(function(a, b) { return parseDurationMs(b.duration) - parseDurationMs(a.duration); });
     }
+
+    renderSongs(sorted);
+}
+
+// Hilfsfunktion: "3:45" oder Millisekunden → Zahl
+function parseDurationMs(duration) {
+    if (!duration) return 0;
+    if (!isNaN(duration)) return parseInt(duration);
+    var parts = duration.split(':');
+    if (parts.length === 2) return parseInt(parts[0]) * 60 + parseInt(parts[1]);
+    return 0;
 }
 
 function openModal(id) {

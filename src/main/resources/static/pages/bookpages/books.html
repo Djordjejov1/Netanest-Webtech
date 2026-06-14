@@ -28,7 +28,17 @@
 
     <div class="card">
         <h2>Meine Bücher</h2>
-        <input type="text" id="filterInput" placeholder="Filtern..." oninput="filterBooks()" />
+        <div class="filter-bar">
+            <select id="sortSelect" onchange="applySortFilter()">
+                <option value="default">Standard</option>
+                <option value="alpha-asc">A → Z</option>
+                <option value="alpha-desc">Z → A</option>
+                <option value="author-asc">Autor A → Z</option>
+                <option value="author-desc">Autor Z → A</option>
+                <option value="year-asc">Älteste zuerst</option>
+                <option value="year-desc">Neueste zuerst</option>
+            </select>
+        </div>
         <div id="booksList"></div>
     </div>
 
