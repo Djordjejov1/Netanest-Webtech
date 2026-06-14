@@ -11,6 +11,7 @@ body {
     position: relative;
     min-height: 100vh;
 }
+
 body::before {
     content: "";
     position: fixed;
@@ -25,11 +26,8 @@ body::before {
 }
 
 @keyframes homeBackgroundFade {
-    to {
-        opacity: 1;
-    }
+    to { opacity: 1; }
 }
-
 
 /* NAVBAR */
 nav {
@@ -42,7 +40,6 @@ nav {
 }
 
 nav h1 { font-size: 1.5rem; }
-
 
 .nav-right {
     display: flex;
@@ -62,65 +59,160 @@ nav button {
     border: 1px solid #555;
     border-radius: 6px;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-nav button:hover { background-color: #333; }
+nav button:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
 
 /* CONTAINER */
 .container {
-    max-width: 1500px;
-    margin: 200px auto;
+    max-width: 1000px;
+    margin: 80px auto;
     padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
 
-/* KATEGORIEN s*/
-.categories {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+/* TOP ICONS */
+.top-icons {
+    display: flex;
+    justify-content: center;
     gap: 20px;
 }
 
 .category-card {
     background-color: rgba(26, 26, 26, 0.88);
     border-radius: 12px;
-    padding: 40px 30px;
+    padding: 30px 20px;
     text-align: center;
     cursor: pointer;
     border: 1px solid #333;
-    transition: border-color 0.2s;
-    min-height: 420px;
+    width: 200px;
+    transition: all 0.2s ease;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 .category-card:hover {
     border-color: #666;
     background-color: #222;
+    transform: translateY(-4px);
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
 }
 
 .category-card .icon {
-    font-size: 7rem;
-    margin-bottom: 15px;
+    font-size: 4rem;
+    margin-bottom: 12px;
 }
 
 .category-card h2 {
-    font-size: 1.3rem;
-    margin-bottom: 8px;
+    font-size: 1.1rem;
     color: #f5f5f4;
 }
 
-.category-card p {
-    color: #888;
-    font-size: 1.1rem;
+/* FAVORITES */
+.favorites-section {
+    background-color: rgba(26, 26, 26, 0.92);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 25px;
 }
 
-.category-card.favorites {
+.favorites-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.favorites-header h2 {
+    font-size: 1.1rem;
+    color: #ffaa00;
+}
+
+.favorites-header input {
+    width: 220px;
+    padding: 8px 12px;
+    background-color: #2a2a2a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.favorites-header input:focus {
+    outline: none;
     border-color: #555;
 }
 
-.category-card.favorites:hover {
-    border-color: #ffaa00;
+.favorites-box {
+    max-height: 320px;
+    overflow-y: auto;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+}
+
+.favorite-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.favorite-item:last-child {
+    border-bottom: none;
+}
+
+.favorite-item img {
+    width: 45px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.favorite-item .info {
+    flex: 1;
+}
+
+.favorite-item .info h3 {
+    font-size: 0.95rem;
+    color: #ffffff;
+    margin-bottom: 3px;
+}
+
+.favorite-item .info p {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.favorite-item .info .countdown {
+    color: #f5a623;
+    font-size: 0.8rem;
+}
+
+.urgent {
+    color: #ff4444 !important;
+}
+
+.fav-remove-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+}
+
+.fav-remove-btn:hover {
+    opacity: 1;
 }
 
 /* RESPONSIVE */
@@ -130,27 +222,29 @@ nav button:hover { background-color: #333; }
         padding: 0 15px;
     }
 
-    .categories {
+    .top-icons {
+        display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+        justify-items: center;
     }
 
     .category-card {
-        min-height: 160px;
+        width: 100%;
         padding: 20px 15px;
     }
 
     .category-card .icon {
         font-size: 3rem;
-        margin-bottom: 8px;
     }
 
-    .category-card h2 {
-        font-size: 1rem;
+    .favorites-header {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    .category-card p {
-        font-size: 0.85rem;
+    .favorites-header input {
+        width: 100%;
     }
 
     nav {
@@ -163,7 +257,7 @@ nav button:hover { background-color: #333; }
 }
 
 @media (max-width: 400px) {
-    .categories {
+    .top-icons {
         grid-template-columns: 1fr;
     }
 }
