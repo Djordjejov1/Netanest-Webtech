@@ -110,3 +110,5 @@ function openAccountInfo() {
 function openSettings() {
     window.location.href = '/pages/settings.html';
 }
+
+//t
