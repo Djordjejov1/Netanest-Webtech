@@ -53,6 +53,7 @@ public class SecurityConfig {
                 .securityContext(context -> context.requireExplicitSave(false)) // Session wird automatisch gespeichert
                 .authorizeHttpRequests(auth -> auth
                                 // Diese Endpoints sind ohne Login erreichbar
+                                .requestMatchers("/images/**").permitAll()
                                 .requestMatchers("/api/auth/**").permitAll()
                                 .requestMatchers("/pages/**").permitAll()
                                 .requestMatchers("/css/**").permitAll()
