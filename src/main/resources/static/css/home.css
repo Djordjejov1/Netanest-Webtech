@@ -124,9 +124,46 @@ nav button:hover { background-color: #333; }
 }
 
 /* RESPONSIVE */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    .container {
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .category-card {
+        min-height: 160px;
+        padding: 20px 15px;
+    }
+
+    .category-card .icon {
+        font-size: 3rem;
+        margin-bottom: 8px;
+    }
+
+    .category-card h2 {
+        font-size: 1rem;
+    }
+
+    .category-card p {
+        font-size: 0.85rem;
+    }
+
+    nav {
+        padding: 10px 15px;
+    }
+
+    nav h1 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 400px) {
     .categories {
         grid-template-columns: 1fr;
     }
-    nav { padding: 10px 15px; }
 }
