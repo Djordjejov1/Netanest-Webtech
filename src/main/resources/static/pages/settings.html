@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeatNest - Einstellungen</title>
+    <link rel="stylesheet" href="/css/settings.css">
+</head>
+<body>
+
+<nav>
+    <h1>NeatNest</h1>
+    <div class="nav-right">
+        <button onclick="window.location.href='/pages/home.html'">Home</button>
+    </div>
+</nav>
+
+<main class="settings-container">
+    <section class="settings-card">
+        <h2>Einstellungen</h2>
+
+        <div class="settings-row">
+            <div>
+                <h3>Designmodus</h3>
+                <p>Wähle aus, wie die Oberfläche angezeigt werden soll.</p>
+            </div>
+            <select id="themeMode">
+                <option>Dunkel</option>
+                <option>Hell</option>
+                <option>System</option>
+            </select>
+        </div>
+
+        <div class="settings-row">
+            <div>
+                <h3>Sprache</h3>
+                <p>Wähle die Sprache für die Benutzeroberfläche.</p>
+            </div>
+            <select id="language">
+                <option>Deutsch</option>
+                <option>Englisch</option>
+            </select>
+        </div>
+
+        <div class="settings-row">
+            <div>
+                <h3>Kartenansicht</h3>
+                <p>Lege fest, wie Medienkarten auf den Seiten angezeigt werden.</p>
+            </div>
+            <select id="cardView">
+                <option>Standard</option>
+                <option>Kompakt</option>
+            </select>
+        </div>
+
+        <button class="save-btn" type="button">Einstellungen speichern</button>
+    </section>
+</main>
+
+</body>
+</html>

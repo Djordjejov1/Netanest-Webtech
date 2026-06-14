@@ -97,3 +97,16 @@ function logout() {
             window.location.href = '/pages/login.html';
         });
 }
+
+function toggleUserMenu() {
+    var menu = document.getElementById('userMenu');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
+
+function openAccountInfo() {
+    window.location.href = '/pages/account.html';
+}
+
+function openSettings() {
+    window.location.href = '/pages/settings.html';
+}
