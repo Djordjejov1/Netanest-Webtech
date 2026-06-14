@@ -11,10 +11,58 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("/images/login_background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transform: scale(1.03);
+    animation: loginBackgroundAppear 1.8s ease-out forwards;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 0;
+    pointer-events: none;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes loginBackgroundAppear {
+    from {
+        opacity: 0;
+        transform: scale(1.03);
+        filter: brightness(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1);
+    }
 }
 
 .container {
+    position: relative;
+    z-index: 2;
     text-align: center;
     width: 100%;
     max-width: 400px;
@@ -24,11 +72,11 @@ body {
 h1 {
     font-size: 2.5rem;
     margin-bottom: 5px;
-    color: #ffffff;
+    color: #ffaa00;
 }
 
 .subtitle {
-    color: #888888;
+    color: #ffaa00;
     margin-bottom: 30px;
 }
 

@@ -5,23 +5,24 @@
 }
 
 body {
-    background-color: #0f0f0f;
+     background-color: #0f0f0f;
     color: #ffffff;
     font-family: Arial, sans-serif;
     position: relative;
     min-height: 100vh;
 }
-
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: url("/images/songs_background.png");
+    background-image: url("/images/books_background.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    clip-path: ellipse(0% 100% at 50% 50%);
-    animation: songsWaveReveal 1.6s ease forwards;
+    opacity: 0;
+    transform: translateY(24px) scale(1.02);
+    filter: brightness(0.75);
+    animation: booksBackgroundReveal 1.5s ease-out forwards;
     z-index: 0;
     pointer-events: none;
 }
@@ -31,9 +32,11 @@ body > * {
     z-index: 1;
 }
 
-@keyframes songsWaveReveal {
+@keyframes booksBackgroundReveal {
     to {
-        clip-path: ellipse(80% 100% at 50% 50%);
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: brightness(1);
     }
 }
 
@@ -87,7 +90,7 @@ nav button:hover {
 
 /* CARD */
 .card {
-    background-color: #1a1a1a;
+    background-color: rgba(26, 26, 26, 0.92);
     border-radius: 12px;
     padding: 25px;
 }
@@ -127,7 +130,7 @@ button:hover {
     background-color: #dddddd;
 }
 
-/* SUCHERGEBNISSE */
+/* SEARCH RESULTS */
 .search-result-item {
     display: flex;
     align-items: center;
@@ -161,8 +164,8 @@ button:hover {
     font-size: 0.85rem;
 }
 
-/* SONG LISTE */
-.song-item {
+/* BOOK LIST */
+.book-item {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -170,27 +173,27 @@ button:hover {
     border-bottom: 1px solid #333;
 }
 
-.song-item img {
+.book-item img {
     width: 50px;
-    height: 50px;
+    height: 70px;
     object-fit: cover;
     border-radius: 4px;
 }
 
-.song-item .info {
+.book-item .info {
     flex: 1;
 }
 
-.song-item .info h3 {
+.book-item .info h3 {
     font-size: 1rem;
 }
 
-.song-item .info p {
+.book-item .info p {
     color: #888;
     font-size: 0.85rem;
 }
 
-.song-item .info-btn {
+.book-item .info-btn {
     padding: 6px 12px;
     background-color: transparent;
     color: #f5a623;
@@ -199,12 +202,12 @@ button:hover {
     font-size: 0.85rem;
 }
 
-.song-item .info-btn:hover {
+.book-item .info-btn:hover {
     background-color: #f5a623;
     color: #000000;
 }
 
-.song-item .delete-btn {
+.book-item .delete-btn {
     padding: 6px 12px;
     background-color: transparent;
     color: #ff4444;
@@ -213,7 +216,7 @@ button:hover {
     font-size: 0.85rem;
 }
 
-.song-item .delete-btn:hover {
+.book-item .delete-btn:hover {
     background-color: #ff4444;
     color: #ffffff;
 }
@@ -275,33 +278,14 @@ button:hover {
     nav {
         padding: 10px 15px;
     }
+
     .container {
         padding: 0 10px;
     }
+
     .modal-content {
         margin: 20px 15px;
         padding: 20px;
         max-width: 100%;
     }
-}
-
-button {
-    transition: all 0.2s ease;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
-}
-.movie-item,
-.song-item,
-.search-result-item {
-    transition: all 0.2s ease;
-}
-
-.movie-item:hover,
-.song-item:hover,
-.search-result-item:hover {
-    background-color: #222;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
 }
