@@ -24,7 +24,7 @@ public class ExternalBookClient {
                             .path("/search.json")
                             .queryParam("q", query)
                             .queryParam("limit", 10)
-                            .queryParam("fields", "title,author_name,first_publish_year,isbn,cover_i")
+                            .queryParam("fields", "title,author_name,first_publish_year,isbn,cover_i,subject")
                             .build())
                     .retrieve()
                     .bodyToMono(Map.class)
@@ -54,6 +54,10 @@ public class ExternalBookClient {
                 // Cover-Bild
                 Object coverId = doc.get("cover_i");
                 book.put("thumbnail", coverId != null ? COVER_URL + coverId + "-M.jpg" : "");
+
+                // Genres — max. 5 zurückgeben
+                List<String> subjects = (List<String>) doc.get("subject");
+                book.put("genre", subjects != null ? subjects.subList(0, Math.min(5, subjects.size())) : new ArrayList<>());
 
                 books.add(book);
             }

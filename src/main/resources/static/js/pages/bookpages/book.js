@@ -41,7 +41,7 @@ function renderBooks(books) {
     for (var i = 0; i < books.length; i++) {
         var book = books[i];
         var item = document.createElement('div');
-        item.className = 'movie-item';
+        item.className = 'book-item';
         item.innerHTML =
             '<img src="' + (book.thumbnailUrl || '') + '" alt="Cover" onerror="this.onerror=null; this.src=\'/assets/no-cover.png\'">' +
             '<div class="info">' +
@@ -97,6 +97,7 @@ function addBook(index) {
         body: JSON.stringify({
             title:          book.title,
             author:         book.author,
+            genre:          Array.isArray(book.genre) ? book.genre.join(', ') : (book.genre || ''),
             year:           book.year,
             isbn:           book.isbn,
             thumbnailUrl:   book.thumbnail,
