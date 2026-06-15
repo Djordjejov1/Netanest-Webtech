@@ -10,6 +10,8 @@ body {
     font-family: Arial, sans-serif;
     position: relative;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 body::before {
@@ -121,6 +123,7 @@ nav h1 {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    flex: 1;
 }
 
 /* TOP ICONS */
@@ -309,7 +312,7 @@ nav h1 {
 }
 
 footer {
-    margin-top: 60px;
+    margin-top: auto;
     padding: 18px 30px;
     background-color: rgba(26, 26, 26, 0.9);
     border-top: 1px solid #333;

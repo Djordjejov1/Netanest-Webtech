@@ -106,9 +106,3 @@ function toggleUserMenu() {
 function openAccountInfo() {
     window.location.href = '/pages/account.html';
 }
-
-function openSettings() {
-    window.location.href = '/pages/settings.html';
-}
-
-//t

@@ -21,7 +21,7 @@
 
     <div class="account-field">
       <label for="accountId">Konto-ID</label>
-      <input type="text" id="accountId" value="Wird später geladen" readonly>
+      <input type="text" id="accountId" value="Wird geladen..." readonly>
     </div>
 
     <div class="account-field">
@@ -29,7 +29,7 @@
       <input type="text" id="username" placeholder="Benutzername">
     </div>
 
-    <button class="save-btn" type="button">Benutzername speichern</button>
+    <button class="save-btn" type="button" onclick="saveUsername()">Benutzername speichern</button>
   </section>
 
   <section class="account-card">
@@ -50,9 +50,10 @@
       <input type="password" id="confirmPassword" placeholder="Neues Passwort bestätigen">
     </div>
 
-    <button class="save-btn" type="button">Passwort speichern</button>
+    <button class="save-btn" type="button" onclick="savePassword()">Passwort speichern</button>
   </section>
 </main>
 
+<script src="/js/pages/account.js"></script>
 </body>
 </html>
