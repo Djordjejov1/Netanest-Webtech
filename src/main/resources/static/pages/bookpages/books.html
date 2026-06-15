@@ -13,14 +13,20 @@
     <div class="nav-right">
         <span id="welcomeText"></span>
         <button onclick="window.location.href='/pages/home.html'">Home</button>
-        <button onclick="logout()">Abmelden</button>
+        <div class="menu-wrapper">
+            <button class="menu-toggle" onclick="toggleUserMenu()">☰</button>
+            <div class="user-menu" id="userMenu">
+                <button onclick="window.location.href='/pages/account.html'">Account Info</button>
+                <button onclick="logout()">Abmelden</button>
+            </div>
+        </div>
     </div>
 </nav>
 
 <div class="container">
 
     <div class="card">
-        <h2>Buch suchen </h2>
+        <h2>Buch suchen</h2>
         <input type="text" id="searchInput" placeholder="Buchtitel oder Autor suchen..." />
         <button onclick="searchBooks()">Suchen</button>
         <div id="searchResults"></div>
@@ -41,7 +47,6 @@
         </div>
         <div id="booksList"></div>
     </div>
-
 
     <div id="bookModal" class="modal-overlay">
         <div class="modal-content">

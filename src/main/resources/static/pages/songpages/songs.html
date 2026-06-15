@@ -12,24 +12,25 @@
     <div class="nav-right">
         <span id="welcomeText"></span>
         <button onclick="window.location.href='/pages/home.html'">Home</button>
-        <button onclick="logout()">Abmelden</button>
+        <div class="menu-wrapper">
+            <button class="menu-toggle" onclick="toggleUserMenu()">☰</button>
+            <div class="user-menu" id="userMenu">
+                <button onclick="window.location.href='/pages/account.html'">Account Info</button>
+                <button onclick="logout()">Abmelden</button>
+            </div>
+        </div>
     </div>
 </nav>
 
-<!-- HAUPTINHALT -->
 <div class="container">
 
-    <!-- SONG HINZUFÜGEN -->
     <div class="card">
         <h2>Song hinzufügen</h2>
         <input type="text" id="searchInput" placeholder="Song oder Artist suchen..." />
         <button onclick="searchSongs()">Suchen</button>
-
-        <!-- Suchergebnisse -->
         <div id="searchResults"></div>
     </div>
 
-    <!-- MEINE SONGS -->
     <div class="card">
         <h2>Meine Songs</h2>
         <div class="filter-bar">
@@ -48,7 +49,6 @@
         <div id="songsList"></div>
     </div>
 
-    <!-- SONG MODAL -->
     <div id="songModal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
@@ -64,8 +64,6 @@
         </div>
     </div>
 </div>
-
-
 
 <script src="/js/pages/songpages/songs.js"></script>
 </body>

@@ -228,3 +228,7 @@ function addToFavorites() {
             }
         });
 }
+function toggleUserMenu() {
+    var menu = document.getElementById('userMenu');
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+}
