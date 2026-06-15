@@ -1,0 +1,274 @@
+/* I apply the custom cursor across shared frontend pages. */
+html,
+body,
+* {
+    cursor: url("/images/cursor-small.png") 0 0, auto !important;
+}
+
+button,
+a,
+select,
+input,
+.category-card,
+.menu-toggle,
+.user-menu button {
+    cursor: url("/images/cursor-small.png") 0 0, pointer !important;
+}
+
+/* I keep the profile menu positioned inside the navbar. */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1500;
+}
+
+.menu-wrapper {
+    position: relative;
+    z-index: 1600;
+}
+
+.menu-toggle {
+    background: transparent;
+    border: 1px solid #555;
+    color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.menu-toggle:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* I hide the menu until the user clicks the menu button. */
+.user-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 44px;
+    min-width: 170px;
+    background-color: rgba(26, 26, 26, 0.96);
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 3000;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.user-menu.is-open {
+    display: flex;
+}
+
+.user-menu button {
+    width: 100%;
+    padding: 12px 16px;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    border-bottom: 1px solid #2a2a2a;
+    border-radius: 0;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.user-menu button:last-child {
+    border-bottom: none;
+}
+
+.user-menu button:hover {
+    background-color: #2a2a2a;
+}
+
+/* I add a small animated accent under page titles. */
+nav h1 {
+    position: relative;
+}
+
+nav h1::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 38px;
+    height: 2px;
+    background-color: #f5a623;
+    border-radius: 999px;
+    transform: translateX(-50%);
+    animation: titleAccentPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes titleAccentPulse {
+    0%, 100% {
+        opacity: 0.45;
+        width: 28px;
+    }
+
+    50% {
+        opacity: 1;
+        width: 52px;
+    }
+}
+
+/* I give repeated content cards a subtle glass effect. */
+.card,
+.category-card,
+.account-card,
+.settings-card,
+.favorite-card,
+.favorites-section {
+    background-color: rgba(26, 26, 26, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+}
+
+/* I highlight active form fields so search feels more responsive. */
+input,
+select,
+textarea {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #f5a623;
+    background-color: rgba(34, 34, 34, 0.96);
+    box-shadow:
+        0 0 0 3px rgba(245, 166, 35, 0.18),
+        0 0 18px rgba(245, 166, 35, 0.22);
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: rgba(245, 166, 35, 0.65);
+}
+
+/* I style the page scrollbar so it matches the dark NeatNest interface. */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #f5a623 #151515;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #151515;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #f5a623, #b86f00);
+    border: 2px solid #151515;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ffbf45, #f5a623);
+}
+
+/* I make shared media pages usable on narrow mobile screens. */
+@media (max-width: 600px) {
+    nav {
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+    }
+
+    nav h1 {
+        font-size: 1.2rem;
+        line-height: 1.2;
+    }
+
+    .nav-right {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+        max-width: 100%;
+    }
+
+    .nav-right span {
+        max-width: min(52vw, 230px);
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        line-height: 1.2;
+    }
+
+    nav button,
+    .menu-toggle {
+        padding: 7px 11px;
+        font-size: 0.85rem;
+    }
+
+    .user-menu {
+        right: 0;
+        top: 38px;
+        min-width: 155px;
+    }
+
+    .container {
+        width: 100%;
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .movie-item,
+    .song-item,
+    .book-item,
+    .search-result-item {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .movie-item .info,
+    .song-item .info,
+    .book-item .info,
+    .search-result-item .info {
+        min-width: 0;
+        flex: 1 1 150px;
+    }
+
+    .movie-item button,
+    .song-item button,
+    .book-item button,
+    .search-result-item button {
+        flex: 1 1 120px;
+    }
+
+    .modal-buttons {
+        flex-wrap: wrap;
+    }
+
+    .modal-buttons button {
+        flex: 1 1 130px;
+    }
+}
+
+@media (max-width: 380px) {
+    nav {
+        justify-content: center;
+    }
+
+    nav h1,
+    .nav-right {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .nav-right span {
+        max-width: 100%;
+        text-align: center;
+    }
+}

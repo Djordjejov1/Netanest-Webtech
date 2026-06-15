@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NeatNest – Movies</title>
     <link rel="stylesheet" href="/css/movies.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/toast.css">
 </head>
 <body>
 
@@ -14,7 +16,16 @@
     <div class="nav-right">
         <span id="welcomeText"></span>
         <button onclick="window.location.href='/pages/home.html'">Home</button>
-        <button onclick="logout()">Abmelden</button>
+        <!-- I use this wrapper to keep the profile menu positioned inside the navbar. -->
+        <div class="menu-wrapper">
+            <button class="menu-toggle" onclick="toggleUserMenu(event)">&#9776;</button>
+            <!-- I keep account actions inside this dropdown menu. -->
+            <div class="user-menu" id="userMenu">
+                <button onclick="openAccountInfo()">Account Info</button>
+                <button onclick="openSettings()">Settings</button>
+                <button onclick="logout()">Abmelden</button>
+            </div>
+        </div>
     </div>
 </nav>
 
@@ -68,6 +79,10 @@
 </div>
 
 
+<div id="toastContainer" class="toast-container"></div>
+
+<script src="/js/pages/menu.js?v=5"></script>
+<script src="/js/pages/toast.js"></script>
 <script src="/js/pages/moviepages/movies.js"></script>
 </body>
 </html>
