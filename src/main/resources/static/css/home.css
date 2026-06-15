@@ -32,23 +32,16 @@ body::before {
 /* NAVBAR */
 nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 22px 30px;
+    padding: 15px 30px;
     background-color: rgba(26, 26, 26, 0.9);
     border-bottom: 1px solid #333;
-    position: relative;
 }
 
-nav h1 {
-    font-size: 2.8rem;
-    color: #ffaa00;
-    text-align: center;
-}
+nav h1 { font-size: 1.5rem; }
 
 .nav-right {
-    position: absolute;
-    right: 30px;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -306,18 +299,4 @@ nav h1 {
     .top-icons {
         grid-template-columns: 1fr;
     }
-}
-
-footer {
-    margin-top: 60px;
-    padding: 18px 30px;
-    background-color: rgba(26, 26, 26, 0.9);
-    border-top: 1px solid #333;
-    text-align: center;
-    color: #cccccc;
-    font-size: 0.9rem;
-}
-
-footer p {
-    margin: 5px 0;
 }
