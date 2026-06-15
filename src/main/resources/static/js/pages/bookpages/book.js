@@ -120,14 +120,30 @@ function deleteBook(id) {
         });
 }
 
-function filterBooks() {
-    var query = document.getElementById('filterInput').value.toLowerCase();
-    var items = document.querySelectorAll('.movie-item');
+function applySortFilter() {
+    var sortValue = document.getElementById('sortSelect').value;
+    var sorted = allBooks.slice();
 
-    for (var i = 0; i < items.length; i++) {
-        var title = items[i].querySelector('h3').textContent.toLowerCase();
-        items[i].style.display = title.includes(query) ? 'flex' : 'none';
+    if (sortValue === 'alpha-asc') {
+        sorted.sort(function(a, b) { return a.title.localeCompare(b.title); });
+
+    } else if (sortValue === 'alpha-desc') {
+        sorted.sort(function(a, b) { return b.title.localeCompare(a.title); });
+
+    } else if (sortValue === 'author-asc') {
+        sorted.sort(function(a, b) { return (a.author || '').localeCompare(b.author || ''); });
+
+    } else if (sortValue === 'author-desc') {
+        sorted.sort(function(a, b) { return (b.author || '').localeCompare(a.author || ''); });
+
+    } else if (sortValue === 'year-asc') {
+        sorted.sort(function(a, b) { return parseInt(a.year || 0) - parseInt(b.year || 0); });
+
+    } else if (sortValue === 'year-desc') {
+        sorted.sort(function(a, b) { return parseInt(b.year || 0) - parseInt(a.year || 0); });
     }
+
+    renderBooks(sorted);
 }
 
 function openModal(id) {

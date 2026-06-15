@@ -32,7 +32,19 @@
     <!-- MEINE SONGS -->
     <div class="card">
         <h2>Meine Songs</h2>
-        <input type="text" id="filterInput" placeholder="Filtern..." oninput="filterSongs()" />
+        <div class="filter-bar">
+            <select id="sortSelect" onchange="applySortFilter()">
+                <option value="default">Standard</option>
+                <option value="alpha-asc">A → Z</option>
+                <option value="alpha-desc">Z → A</option>
+                <option value="artist-asc">Artist A → Z</option>
+                <option value="artist-desc">Artist Z → A</option>
+                <option value="date-asc">Älteste zuerst</option>
+                <option value="date-desc">Neueste zuerst</option>
+                <option value="duration-asc">Kürzeste zuerst</option>
+                <option value="duration-desc">Längste zuerst</option>
+            </select>
+        </div>
         <div id="songsList"></div>
     </div>
 

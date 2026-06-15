@@ -34,7 +34,19 @@
     <!-- MEINE FILME -->
     <div class="card">
         <h2>Meine Filme</h2>
-        <input type="text" id="filterInput" placeholder="Filtern..." oninput="filterMovies()" />
+        <div class="filter-bar">
+            <select id="sortSelect" onchange="applySortFilter()">
+                <option value="default">Standard</option>
+                <option value="alpha-asc">A → Z</option>
+                <option value="alpha-desc">Z → A</option>
+                <option value="year-asc">Jahr ↑</option>
+                <option value="year-desc">Jahr ↓</option>
+                <option value="rating-desc">Beste Bewertung</option>
+                <option value="rating-asc">Schlechteste Bewertung</option>
+                <option value="runtime-asc">Kürzeste Laufzeit</option>
+                <option value="runtime-desc">Längste Laufzeit</option>
+            </select>
+        </div>
         <div id="moviesList"></div>
     </div>
 

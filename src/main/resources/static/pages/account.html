@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeatNest - Kontoinformationen</title>
+  <link rel="stylesheet" href="/css/account.css">
+</head>
+<body>
+
+<nav>
+  <h1>NeatNest</h1>
+  <div class="nav-right">
+    <button onclick="window.location.href='/pages/home.html'">Home</button>
+  </div>
+</nav>
+
+<main class="account-container">
+  <section class="account-card">
+    <h2>Kontoinformationen</h2>
+
+    <div class="account-field">
+      <label for="accountId">Konto-ID</label>
+      <input type="text" id="accountId" value="Wird später geladen" readonly>
+    </div>
+
+    <div class="account-field">
+      <label for="username">Benutzername</label>
+      <input type="text" id="username" placeholder="Benutzername">
+    </div>
+
+    <button class="save-btn" type="button">Benutzername speichern</button>
+  </section>
+
+  <section class="account-card">
+    <h2>Passwort ändern</h2>
+
+    <div class="account-field">
+      <label for="currentPassword">Aktuelles Passwort</label>
+      <input type="password" id="currentPassword" placeholder="Aktuelles Passwort">
+    </div>
+
+    <div class="account-field">
+      <label for="newPassword">Neues Passwort</label>
+      <input type="password" id="newPassword" placeholder="Neues Passwort">
+    </div>
+
+    <div class="account-field">
+      <label for="confirmPassword">Neues Passwort bestätigen</label>
+      <input type="password" id="confirmPassword" placeholder="Neues Passwort bestätigen">
+    </div>
+
+    <button class="save-btn" type="button">Passwort speichern</button>
+  </section>
+</main>
+
+</body>
+</html>

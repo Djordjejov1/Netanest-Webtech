@@ -290,3 +290,67 @@ button:hover {
         max-width: 100%;
     }
 }
+
+/* FILTER BAR */
+.filter-bar {
+    margin-bottom: 15px;
+}
+
+.filter-bar select {
+    width: 100%;
+    padding: 10px 14px;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f5a623' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    transition: border-color 0.2s;
+}
+
+.filter-bar select:focus {
+    outline: none;
+    border-color: #f5a623;
+}
+
+.filter-bar select option {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* FILTER BAR */
+.filter-bar {
+    margin-bottom: 15px;
+}
+
+.filter-bar select {
+    width: 100%;
+    padding: 10px 14px;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f5a623' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    transition: border-color 0.2s;
+}
+
+.filter-bar select:focus {
+    outline: none;
+    border-color: #f5a623;
+}
+
+.filter-bar select option {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}

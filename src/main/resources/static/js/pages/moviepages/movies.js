@@ -132,19 +132,51 @@ function deleteMovie(id) {
         });
 }
 
-// Filme filtern
-function filterMovies() {
-    var query = document.getElementById('filterInput').value.toLowerCase();
-    var items = document.querySelectorAll('.movie-item');
+function applySortFilter() {
+    var sortValue = document.getElementById('sortSelect').value;
+    var sorted = allMovies.slice(); // kopie damit original bleibt
 
-    for (var i = 0; i < items.length; i++) {
-        var title = items[i].querySelector('h3').textContent.toLowerCase();
-        if (title.includes(query)) {
-            items[i].style.display = 'flex';
-        } else {
-            items[i].style.display = 'none';
-        }
+    if (sortValue === 'alpha-asc') {
+        sorted.sort(function(a, b) { return a.title.localeCompare(b.title); });
+
+    } else if (sortValue === 'alpha-desc') {
+        sorted.sort(function(a, b) { return b.title.localeCompare(a.title); });
+
+    } else if (sortValue === 'year-asc') {
+        sorted.sort(function(a, b) { return parseInt(a.year) - parseInt(b.year); });
+
+    } else if (sortValue === 'year-desc') {
+        sorted.sort(function(a, b) { return parseInt(b.year) - parseInt(a.year); });
+
+    } else if (sortValue === 'rating-desc') {
+        sorted.sort(function(a, b) {
+            return parseFloat(b.imdbRating || 0) - parseFloat(a.imdbRating || 0);
+        });
+
+    } else if (sortValue === 'rating-asc') {
+        sorted.sort(function(a, b) {
+            return parseFloat(a.imdbRating || 0) - parseFloat(b.imdbRating || 0);
+        });
+
+    } else if (sortValue === 'runtime-asc') {
+        sorted.sort(function(a, b) {
+            return parseRuntimeMinutes(a.runtime) - parseRuntimeMinutes(b.runtime);
+        });
+
+    } else if (sortValue === 'runtime-desc') {
+        sorted.sort(function(a, b) {
+            return parseRuntimeMinutes(b.runtime) - parseRuntimeMinutes(a.runtime);
+        });
     }
+
+    renderMovies(sorted);
+}
+
+// Hilfsfunktion: "120 min" → 120
+function parseRuntimeMinutes(runtime) {
+    if (!runtime) return 0;
+    var match = runtime.match(/\d+/);
+    return match ? parseInt(match[0]) : 0;
 }
 
 function openModal(id) {

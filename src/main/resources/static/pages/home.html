@@ -8,39 +8,46 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
     <h1>NeatNest</h1>
     <div class="nav-right">
         <span id="welcomeText"></span>
-        <button onclick="logout()">Abmelden</button>
+
+        <div class="menu-wrapper">
+            <button class="menu-toggle" onclick="toggleUserMenu()">☰</button>
+            <div class="user-menu" id="userMenu">
+                <button onclick="openAccountInfo()">Account Info</button>
+                <button onclick="openSettings()">Settings</button>
+                <button onclick="logout()">Abmelden</button>
+            </div>
+        </div>
     </div>
 </nav>
 
-<!-- HAUPTINHALT -->
 <div class="container">
 
-    <!-- KATEGORIEN -->
-    <div class="categories">
+    <div class="top-icons">
         <div class="category-card" onclick="window.location.href='/pages/moviespages/movies.html'">
             <div class="icon">🍿</div>
             <h2>Movies</h2>
-            <p>Deine Filmsammlung</p>
         </div>
         <div class="category-card" onclick="window.location.href='/pages/songpages/songs.html'">
             <div class="icon">🎧</div>
             <h2>Songs</h2>
-            <p>Deine Musiksammlung</p>
         </div>
         <div class="category-card" onclick="window.location.href='/pages/bookpages/books.html'">
             <div class="icon">📖</div>
             <h2>Books</h2>
-            <p>Deine Büchersammlung</p>
         </div>
-        <div class="category-card favorites" onclick="window.location.href='/pages/favorites.html'">
-            <div class="icon">✨</div>
-            <h2>Favorites</h2>
-            <p>Deine Lieblinge</p>
+    </div>
+
+    <div class="favorites-section">
+        <div class="favorites-header">
+            <h2>⭐ Favorites</h2>
+            <input type="text" placeholder="Search favorites..." oninput="filterFavorites()">
+        </div>
+        <div class="favorites-box">
+            <div id="favoritesList"></div>
         </div>
     </div>
 
