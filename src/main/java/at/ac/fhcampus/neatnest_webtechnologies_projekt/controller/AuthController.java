@@ -83,7 +83,8 @@ public class AuthController {
     public ResponseEntity logout(HttpServletRequest request) {
 
         HttpSession session = request.getSession(false);
-        // egal , ob eine Session exsitiert oder nicht. Er gibt dir hier einen Wert zurück
+        // false bedeutet, gib mir die bestehe Session, aber erstell keine neue wenn keine existiert
+        // gib mir einen Hnull falls sich niemand eingeloggt hat
 
         if (session != null) {
             session.invalidate(); // sollte die Session vorhanden sein. Löscht Spring dann Session und eintrag aus dem RAM

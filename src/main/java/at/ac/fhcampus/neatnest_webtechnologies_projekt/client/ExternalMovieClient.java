@@ -16,11 +16,13 @@ public class ExternalMovieClient {
 
     @Value("${omdb.api.url}")
     private String apiUrl;
+    //die Werte ließt er beim start aus den appliaction.properties
 
     public List<Map> searchMovies(String query) {
         try {
-            // OMDB API aufrufen
+            // OMDB API aufrufen, wir bauen eine URL auf senden demensprechend eine anfrage
             Map response = WebClient.create(apiUrl)
+                    //Webclient macht das parsen automatisch
                     .get()
                     .uri("/?s=" + query + "&apikey=" + apiKey)
                     .retrieve()
@@ -50,9 +52,11 @@ public class ExternalMovieClient {
         }
     }
 
+    //kriegt ein imdbID rein !!!!!!
     private Map getMovieDetails(String imdbId) {
         try {
             Map response = WebClient.create(apiUrl)
+                    //Webclient macht das Parsen automatisch!
                     .get()
                     .uri("/?i=" + imdbId + "&apikey=" + apiKey)
                     .retrieve()
