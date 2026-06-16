@@ -13,7 +13,7 @@ window.onload = function() {
         })
         .then(function(text) {
             if (text) {
-                document.getElementById('welcomeText').textContent = text;
+                document.getElementById('welcomeText').textContent = 'Willkommen ' + text.replace('Eingeloggt als', '').replace(':', '').trim();
                 loadBooks();
             }
         });
@@ -97,10 +97,10 @@ function addBook(index) {
         body: JSON.stringify({
             title:          book.title,
             author:         book.author,
-            genre:          Array.isArray(book.genre) ? book.genre.join(', ') : (book.genre || ''),
             year:           book.year,
             isbn:           book.isbn,
             thumbnailUrl:   book.thumbnail,
+            genre:          Array.isArray(book.genre) ? book.genre.join(', ') : (book.genre || ''),
             googleBooksUrl: ''
         })
     })
@@ -109,6 +109,8 @@ function addBook(index) {
                 document.getElementById('searchResults').innerHTML = '';
                 document.getElementById('searchInput').value = '';
                 loadBooks();
+                // Shows a success toast after a book was added.
+                showToast("Erfolgreich hinzugefügt", "success");
             }
         });
 }
@@ -191,13 +193,13 @@ function addToFavorites() {
     })//
         .then(function(response) {
             if (response.ok) {
-                alert('Zu Favoriten hinzugefügt!');
+                showToast('Zu Favoriten hinzugefügt', 'success');
                 closeModal();
             } else if (response.status === 409) {
-                alert('Bereits in deinen Favoriten!');
+                showToast('Bereits in deinen Favoriten', 'info');
                 closeModal();
             } else {
-                alert('Fehler beim Hinzufügen.');
+                showToast('Fehler beim Hinzufügen', 'error');
             }
         });
 }
@@ -207,9 +209,4 @@ function logout() {
         .then(function() {
             window.location.href = '/pages/login.html';
         });
-}
-
-function toggleUserMenu() {
-    var menu = document.getElementById('userMenu');
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
 }

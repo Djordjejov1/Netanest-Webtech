@@ -11,7 +11,7 @@ window.onload = function() {
         })
         .then(text => {
             if (text) {
-                document.getElementById('welcomeText').textContent = text;
+                document.getElementById('welcomeText').textContent = 'Willkommen ' + text.replace('Eingeloggt als', '').replace(':', '').trim();
                 loadFavorites();
             }
         });
@@ -106,3 +106,5 @@ function toggleUserMenu() {
 function openAccountInfo() {
     window.location.href = '/pages/account.html';
 }
+
+//t

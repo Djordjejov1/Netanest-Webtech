@@ -14,7 +14,7 @@ window.onload = function() {
         })
         .then(text => {
             if (text) {
-                document.getElementById('welcomeText').textContent = text;
+                document.getElementById('welcomeText').textContent = 'Willkommen ' + text.replace('Eingeloggt als', '').replace(':', '').trim();
                 loadSongs();
             }
         });
@@ -113,6 +113,8 @@ function addSong(index) {
                 document.getElementById('searchResults').innerHTML = '';
                 document.getElementById('searchInput').value = '';
                 loadSongs();
+                // Shows a success toast after a song was added.
+                showToast("Erfolgreich hinzugefügt", "success");
             }
         });
 }
@@ -218,17 +220,13 @@ function addToFavorites() {
     })
         .then(response => {
             if (response.ok) {
-                alert('Zu Favoriten hinzugefügt!');
+                showToast('Zu Favoriten hinzugefügt', 'success');
                 closeModal();
             } else if (response.status === 409) {
-                alert('Bereits in deinen Favoriten!');
+                showToast('Bereits in deinen Favoriten', 'info');
                 closeModal();
             } else {
-                alert('Fehler beim Hinzufügen.');
+                showToast('Fehler beim Hinzufügen', 'error');
             }
         });
-}
-function toggleUserMenu() {
-    var menu = document.getElementById('userMenu');
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
 }

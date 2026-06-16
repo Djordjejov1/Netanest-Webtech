@@ -14,7 +14,7 @@ window.onload = function() {
             document.getElementById('title').value       = song.title || '';
             document.getElementById('artist').value      = song.artist || '';
             document.getElementById('album').value       = song.album || '';
-            document.getElementById('releaseDate').value = song.releaseDate || '';
+document.getElementById('releaseDate').value = song.releaseDate || '';
             document.getElementById('duration').value    = song.duration || '';
             document.getElementById('explicit').value    = song.explicit != null ? song.explicit : '';
             document.getElementById('coverUrl').value    = song.coverUrl || '';
@@ -31,7 +31,7 @@ function saveSong() {
             title:       document.getElementById('title').value,
             artist:      document.getElementById('artist').value,
             album:       document.getElementById('album').value,
-            releaseDate: document.getElementById('releaseDate').value,
+releaseDate: document.getElementById('releaseDate').value,
             duration:    document.getElementById('duration').value,
             explicit:    document.getElementById('explicit').value === 'true',
             coverUrl:    document.getElementById('coverUrl').value,
