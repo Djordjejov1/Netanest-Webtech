@@ -300,10 +300,7 @@ button {
     transition: all 0.2s ease;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
-}
+
 .movie-item,
 .song-item,
 .search-result-item {

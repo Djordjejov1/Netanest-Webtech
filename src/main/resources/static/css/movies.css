@@ -230,6 +230,12 @@ button:hover {
     color: #ffffff;
 }
 
+.movie-item:hover,
+.search-result-item:hover {
+    background-color: #222;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+}
+
 .empty-message {
     color: #888;
     text-align: center;

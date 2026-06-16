@@ -2,7 +2,7 @@
 html,
 body,
 * {
-    cursor: url("/images/cursor-small.png") 0 0, auto !important;
+
 }
 
 button,
@@ -12,7 +12,7 @@ input,
 .category-card,
 .menu-toggle,
 .user-menu button {
-    cursor: url("/images/cursor-small.png") 0 0, pointer !important;
+
 }
 
 /* I keep the profile menu positioned inside the navbar. */
