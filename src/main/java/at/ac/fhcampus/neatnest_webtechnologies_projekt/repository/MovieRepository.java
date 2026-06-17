@@ -20,4 +20,6 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     // Filme nach Titel suchen
     List<Movie> findByUserAndTitleContainingIgnoreCase(User user, String title);
+
+    boolean existsByUserAndTitleIgnoreCase(User user, String title);
 }

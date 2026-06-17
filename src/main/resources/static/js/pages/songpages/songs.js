@@ -61,7 +61,10 @@ function searchSongs() {
     var query = document.getElementById('searchInput').value;
     var results = document.getElementById('searchResults');
 
-    if (!query) return;
+    if (!query) {
+        showToast("Bitte einen Suchbegriff eingeben", "error");
+        return;
+    }
 
     results.innerHTML = '<p class="empty-message">Suche...</p>';
 
@@ -109,11 +112,12 @@ function addSong(index) {
         })
     })
         .then(response => {
-            if (response.ok) {
+            if (response.status === 409) {
+                showToast("Bereits in deiner Liste", "error");
+            } else if (response.ok) {
                 document.getElementById('searchResults').innerHTML = '';
                 document.getElementById('searchInput').value = '';
                 loadSongs();
-                // Shows a success toast after a song was added.
                 showToast("Erfolgreich hinzugefügt", "success");
             }
         });

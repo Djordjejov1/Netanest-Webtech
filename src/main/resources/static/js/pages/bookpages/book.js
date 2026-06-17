@@ -58,7 +58,10 @@ function searchBooks() {
     var query = document.getElementById('searchInput').value;
     var results = document.getElementById('searchResults');
 
-    if (!query) return;
+    if (!query) {
+        showToast("Bitte einen Suchbegriff eingeben", "error");
+        return;
+    }
 
     results.innerHTML = '<p class="empty-message">Suche...</p>';
 
@@ -105,11 +108,12 @@ function addBook(index) {
         })
     })
         .then(function(response) {
-            if (response.ok) {
+            if (response.status === 409) {
+                showToast("Bereits in deiner Liste", "error");
+            } else if (response.ok) {
                 document.getElementById('searchResults').innerHTML = '';
                 document.getElementById('searchInput').value = '';
                 loadBooks();
-                // Shows a success toast after a book was added.
                 showToast("Erfolgreich hinzugefügt", "success");
             }
         });

@@ -27,6 +27,9 @@ public class MovieController {
     @PostMapping
     public ResponseEntity addMovie(HttpSession session, @RequestBody Movie movie) {
         Movie saved = movieService.addMovie(session, movie);
+        if (saved == null) {
+            return ResponseEntity.status(409).body("Bereits in deiner Liste");
+        }
         return ResponseEntity.status(201).body(saved);
     }
 

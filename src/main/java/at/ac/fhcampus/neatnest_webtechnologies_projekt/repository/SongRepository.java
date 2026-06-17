@@ -16,4 +16,6 @@ public interface SongRepository extends JpaRepository<Song, Long> {
     Optional<Song> findByIdAndUser(Long id, User user);
 
     List<Song> findByUserAndTitleContainingIgnoreCase(User user, String title);
+
+    boolean existsByUserAndTitleIgnoreCase(User user, String title);
 }

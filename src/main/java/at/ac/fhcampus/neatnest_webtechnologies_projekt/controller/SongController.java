@@ -25,6 +25,9 @@ public class SongController {
     @PostMapping
     public ResponseEntity addSong(HttpSession session, @RequestBody Song song) {
         Song saved = songService.addSong(session, song);
+        if (saved == null) {
+            return ResponseEntity.status(409).body("Bereits in deiner Liste");
+        }
         return ResponseEntity.status(201).body(saved);
     }
 
