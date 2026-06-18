@@ -25,6 +25,9 @@ public class BookController {
     @PostMapping
     public ResponseEntity addBook(HttpSession session, @RequestBody Book book) {
         Book saved = bookService.addBook(session, book);
+        if (saved == null){
+            return ResponseEntity.status(409).body("Bereits in deiner Liste");
+        }
         return ResponseEntity.status(201).body(saved);
     }
 

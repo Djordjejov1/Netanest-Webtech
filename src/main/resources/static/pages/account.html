@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NeatNest - Kontoinformationen</title>
   <link rel="stylesheet" href="/css/account.css">
+  <link rel="stylesheet" href="/css/menu.css">
 </head>
 <body>
 
@@ -29,7 +30,7 @@
       <input type="text" id="username" placeholder="Benutzername">
     </div>
 
-    <button class="save-btn" type="button">Benutzername speichern</button>
+      <button class="save-btn" type="button" onclick="saveUsername()">Benutzername speichern</button>
   </section>
 
   <section class="account-card">
@@ -50,9 +51,10 @@
       <input type="password" id="confirmPassword" placeholder="Neues Passwort bestätigen">
     </div>
 
-    <button class="save-btn" type="button">Passwort speichern</button>
+      <button class="save-btn" type="button" onclick="savePassword()">Passwort speichern</button>
   </section>
 </main>
 
+<script src="/js/pages/account.js"></script>
 </body>
 </html>

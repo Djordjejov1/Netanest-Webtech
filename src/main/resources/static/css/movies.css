@@ -230,6 +230,12 @@ button:hover {
     color: #ffffff;
 }
 
+.movie-item:hover,
+.search-result-item:hover {
+    background-color: #222;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.08);
+}
+
 .empty-message {
     color: #888;
     text-align: center;
@@ -246,11 +252,14 @@ button:hover {
     height: 100%;
     background: rgba(0,0,0,0.7);
     z-index: 999;
+    overflow-y: auto;
+    padding-top: 20px;
+    box-sizing: border-box;
 }
 
 .modal-content {
     background: #1a1a1a;
-    max-width: 500px;
+    max-width: 400px;
     margin: 60px auto;
     padding: 30px;
     border-radius: 12px;
@@ -261,7 +270,8 @@ button:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 15px;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
 .modal-header img {
@@ -288,13 +298,27 @@ button:hover {
     nav {
         padding: 10px 15px;
     }
+
     .container {
         padding: 0 10px;
     }
+
+    .modal-overlay {
+        overflow-y: auto;
+        padding: 10px;
+        padding-top: 65px;
+        box-sizing: border-box;
+    }
+
     .modal-content {
-        margin: 20px 15px;
-        padding: 20px;
+        margin: 0 auto;
+        padding: 15px;
         max-width: 100%;
+        width: 100%;
+    }
+
+    .modal-header img {
+        width: 50%;
     }
 }
 

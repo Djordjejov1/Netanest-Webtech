@@ -32,6 +32,9 @@ public class BookService {
 
     public Book addBook(HttpSession session, Book book) {
         User user = getUserFromSession(session);
+        if (bookRepository.existsByUserAndTitleIgnoreCase(user,book.getTitle())){
+            return null;
+        }
         book.setUser(user);
         return bookRepository.save(book);
     }

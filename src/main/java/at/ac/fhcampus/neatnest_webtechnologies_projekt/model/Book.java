@@ -14,6 +14,7 @@ public class Book {
     private String title;
 
     private String author;
+    @Column(length = 1000)
     private String genre;
 
     @Column(name = "release_year")

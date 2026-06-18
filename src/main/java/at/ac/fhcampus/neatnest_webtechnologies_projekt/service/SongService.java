@@ -32,6 +32,9 @@ public class SongService {
 
     public Song addSong(HttpSession session, Song song) {
         User user = getUserFromSession(session);
+        if (songRepository.existsByUserAndTitleIgnoreCase(user, song.getTitle())){
+            return null;
+        }
         song.setUser(user);
         return songRepository.save(song);
     }

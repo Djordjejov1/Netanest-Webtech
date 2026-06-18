@@ -83,7 +83,8 @@ public class AuthController {
     public ResponseEntity logout(HttpServletRequest request) {
 
         HttpSession session = request.getSession(false);
-        // egal , ob eine Session exsitiert oder nicht. Er gibt dir hier einen Wert zurück
+        // false bedeutet, gib mir die bestehe Session, aber erstell keine neue wenn keine existiert
+        // gib mir einen Hnull falls sich niemand eingeloggt hat
 
         if (session != null) {
             session.invalidate(); // sollte die Session vorhanden sein. Löscht Spring dann Session und eintrag aus dem RAM
@@ -106,4 +107,63 @@ public class AuthController {
     }
     // Wichtigster Part für die Authetifiztierung. BIn ich gerade eingeloggt.
     // Endpoint — jede Seite der App ruft das beim Laden auf um zu prüfen ob der User noch eingeloggt ist
+
+
+
+    //Accountdetails bearbeiten feature hinzugefügt:
+    @GetMapping("/account")
+    public ResponseEntity getAccount(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null) return ResponseEntity.status(401).body("Nicht eingeloggt");
+
+        Long userId = (Long) session.getAttribute("userId");
+        User user = userRepository.findById(userId).orElse(null);
+        if (user == null) return ResponseEntity.status(404).body("User nicht gefunden");
+
+        return ResponseEntity.ok(Map.of(
+                "id", user.getId(),
+                "username", user.getUsername(),
+                "createdAt", user.getCreatedAt().toString()
+        ));
+    }
+
+    @PutMapping("/account/username")
+    public ResponseEntity updateUsername(@RequestBody Map<String, String> body, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null) return ResponseEntity.status(401).body("Nicht eingeloggt");
+
+        String newUsername = body.get("username");
+        if (newUsername == null || newUsername.isBlank()) return ResponseEntity.badRequest().body("Username darf nicht leer sein");
+
+        if (userRepository.existsByUsername(newUsername)) return ResponseEntity.status(409).body("Username bereits vergeben");
+
+        Long userId = (Long) session.getAttribute("userId");
+        User user = userRepository.findById(userId).orElse(null);
+        user.setUsername(newUsername);
+        userRepository.save(user);
+        session.setAttribute("username", newUsername);
+
+        return ResponseEntity.ok("Username geändert");
+    }
+
+    @PutMapping("/account/password")
+    public ResponseEntity updatePassword(@RequestBody Map<String, String> body, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session == null) return ResponseEntity.status(401).body("Nicht eingeloggt");
+
+        String currentPassword = body.get("currentPassword");
+        String newPassword = body.get("newPassword");
+
+        Long userId = (Long) session.getAttribute("userId");
+        User user = userRepository.findById(userId).orElse(null);
+
+        if (!passwordEncoder.matches(currentPassword, user.getPassword())) {
+            return ResponseEntity.status(400).body("Aktuelles Passwort falsch");
+        }
+
+        user.setPassword(passwordEncoder.encode(newPassword));
+        userRepository.save(user);
+
+        return ResponseEntity.ok("Passwort geändert");
+    }
 }

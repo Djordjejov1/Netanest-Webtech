@@ -42,6 +42,9 @@ public class MovieService {
 
     public Movie addMovie(HttpSession session, Movie movie) {
         User user = getUserFromSession(session);
+        if (movieRepository.existsByUserAndTitleIgnoreCase(user, movie.getTitle())){
+            return null;
+        }
         movie.setUser(user);
         return movieRepository.save(movie);
     }

@@ -20,8 +20,10 @@ body::before {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    clip-path: ellipse(0% 100% at 50% 50%);
-    animation: songsWaveReveal 1.6s ease forwards;
+    filter: blur(14px);
+    transform: scale(1.04);
+    opacity: 0;
+    animation: sharedBackgroundClear 1.6s ease forwards;
     z-index: 0;
     pointer-events: none;
 }
@@ -31,9 +33,17 @@ body > * {
     z-index: 1;
 }
 
-@keyframes songsWaveReveal {
+@keyframes sharedBackgroundClear {
+    from {
+        filter: blur(14px);
+        transform: scale(1.04);
+        opacity: 0;
+    }
+
     to {
-        clip-path: ellipse(80% 100% at 50% 50%);
+        filter: blur(0);
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
@@ -235,11 +245,14 @@ button:hover {
     height: 100%;
     background: rgba(0,0,0,0.7);
     z-index: 999;
+    overflow-y: auto;
+    padding-top: 20px;
+    box-sizing: border-box;
 }
 
 .modal-content {
     background: #1a1a1a;
-    max-width: 500px;
+    max-width: 400px;
     margin: 60px auto;
     padding: 30px;
     border-radius: 12px;
@@ -250,7 +263,8 @@ button:hover {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 15px;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
 .modal-header img {
@@ -277,13 +291,27 @@ button:hover {
     nav {
         padding: 10px 15px;
     }
+
     .container {
         padding: 0 10px;
     }
+
+    .modal-overlay {
+        overflow-y: auto;
+        padding: 10px;
+        padding-top: 65px;
+        box-sizing: border-box;
+    }
+
     .modal-content {
-        margin: 20px 15px;
-        padding: 20px;
+        margin: 0 auto;
+        padding: 15px;
         max-width: 100%;
+        width: 100%;
+    }
+
+    .modal-header img {
+        width: 50%;
     }
 }
 
@@ -291,10 +319,7 @@ button {
     transition: all 0.2s ease;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
-}
+
 .movie-item,
 .song-item,
 .search-result-item {
