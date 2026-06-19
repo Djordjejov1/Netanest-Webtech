@@ -27,6 +27,14 @@ function loadFavorites() {
         });
 }
 
+function filterFavorites() {
+    var query = document.querySelector('.favorites-header input').value.toLowerCase();
+    var filtered = allFavorites.filter(function(fav) {
+        return fav.title.toLowerCase().includes(query);
+    });
+    renderFavorites(filtered);
+}
+
 function renderFavorites(favorites) {
     var list = document.getElementById('favoritesList');
     if (!list) return;
@@ -106,5 +114,3 @@ function toggleUserMenu() {
 function openAccountInfo() {
     window.location.href = '/pages/account.html';
 }
-
-//t
